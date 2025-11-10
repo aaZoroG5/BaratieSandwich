@@ -1,9 +1,20 @@
 package com.pluralsight.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Order {
 
-    private String itemName;
-    private double price;
-    private int quantity;
+    private List<MenuItem> orderItems;
+
+    public Order(List<MenuItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
+    public void addSandwich(){
+
+    }
+
+
 
 }
