@@ -2,15 +2,17 @@ package com.pluralsight.models;
 
 import java.util.List;
 
-public class Toppings extends Order{
+public class Toppings extends MenuItem{
 
-    private String topping;
     private String intensity;
 
-    public Toppings(double price, List<Order> orderItems, String topping, String intensity) {
-        super(price, orderItems);
-        this.topping = topping;
+    public Toppings(String name, double price, String topping, String intensity) {
+        super(name, price);
         this.intensity = intensity;
     }
 
+    @Override
+    public double calculatePrice() {
+        return 0;
+    }
 }
