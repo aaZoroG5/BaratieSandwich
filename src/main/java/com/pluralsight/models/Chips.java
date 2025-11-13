@@ -1,20 +1,26 @@
 package com.pluralsight.models;
 
-import java.util.List;
+//needed to import Menu class because of the static helper prompt() method
+//it connects user input
+import com.pluralsight.ui.Menu;
 
 public class Chips extends MenuItem{
 
+    //properties
     private String flavor;
-    private int quantity;
 
-    public Chips(String name, double price, String flavor, int quantity) {
-        super(name, price);
-        this.flavor = flavor;
-        this.quantity = quantity;
+    //constructor
+    public Chips(String name) {
+        super("Chips");
     }
 
     @Override
     public double calculatePrice() {
-        return 0;
+        return 1.50;
+    }
+
+    //this method asks the user for chip flavor
+    public void customerInput(){
+        this.flavor = Menu.prompt("Enter chip flavor");
     }
 }

@@ -1,6 +1,7 @@
 package com.pluralsight.models;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Sandwich extends MenuItem{
 
@@ -12,8 +13,10 @@ public class Sandwich extends MenuItem{
     private List<Toppings> toppings = new ArrayList<>();
 
     //constructor
-    public Sandwich(String name, double price) {
+    public Sandwich(String name) {
         super("Sandwich");
+        //NOTE: Only the name property was set in the constructor because the rest of the sandwich properties
+        //will be set by user input
     }
 
     //sandwich price calculation
@@ -30,6 +33,16 @@ public class Sandwich extends MenuItem{
         return sandwichPrice * this.quantity;
     }
 
+    //this method adds topping by category
+    private void addToppingByType (ToppingType type){
+        List<ToppingOption> options = List.of(ToppingOption.values()).stream() //TODO: REVIEW
+                .filter(t -> t.getType() == type)
+                .toList();
+
+        for(ToppingOption option : options){
+            if()
+        }
+    }
     //setters/getters
     public int getSize() {
         return size;
