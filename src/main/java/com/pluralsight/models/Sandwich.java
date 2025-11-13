@@ -1,4 +1,6 @@
 package com.pluralsight.models;
+import com.pluralsight.ui.Menu;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,10 +15,20 @@ public class Sandwich extends MenuItem{
     private List<Toppings> toppings = new ArrayList<>();
 
     //constructor
-    public Sandwich(String name) {
+    public Sandwich() {
         super("Sandwich");
         //NOTE: Only the name property was set in the constructor because the rest of the sandwich properties
         //will be set by user input
+    }
+
+    //constructor for potential signature sandwiches
+    public Sandwich(String name, int size, String breadType, boolean isToasted, int quantity, List<Toppings> toppings) {
+        super("Sandwich");
+        this.size = size;
+        this.breadType = breadType;
+        this.isToasted = isToasted;
+        this.quantity = quantity;
+        this.toppings = toppings;
     }
 
     //sandwich price calculation
@@ -35,12 +47,22 @@ public class Sandwich extends MenuItem{
 
     //this method adds topping by category
     private void addToppingByType (ToppingType type){
+        //create stream that goes through all toppings
         List<ToppingOption> options = List.of(ToppingOption.values()).stream() //TODO: REVIEW
                 .filter(t -> t.getType() == type)
                 .toList();
 
         for(ToppingOption option : options){
-            if()
+            String input = Menu.prompt(String.format("Add %s (y/n)", option.getName()));
+            //MISTAKE: Was only able to pass one parameter, so I had to use the String.format method
+            //instead of the concat I had before
+            if(input.equalsIgnoreCase("yes")){
+                boolean extra = false;
+                if(option.isPremium()){
+                    String extraInput = Menu.prompt(String.format("Add extra %s? (y/n)", option.getName()));
+                }
+                toppings.add(new Toppings(extra, option));
+            }
         }
     }
     //setters/getters
