@@ -9,21 +9,11 @@ public class Sandwich extends MenuItem{
     private boolean isToasted;
     private int quantity;
     //made theses properties into lists because there is more than one value
-    private List<Toppings> meats;
-    private List<Toppings> cheeses;
-    private List<Toppings> regToppings;
+    private List<Toppings> toppings = new ArrayList<>();
 
     //constructor
-    public Sandwich(String name, double price, int size, String breadType, boolean isToasted, int quantity, List<Toppings> meats, List<Toppings> cheeses, List<Toppings> regToppings) {
-        super(name, price);
-        this.size = size;
-        this.breadType = breadType;
-        this.isToasted = isToasted;
-        this.quantity = quantity;
-
-        this.meats = new ArrayList<>();
-        this.cheeses = new ArrayList<>();
-        this.regToppings = new ArrayList<>();
+    public Sandwich(String name, double price) {
+        super("Sandwich");
     }
 
     //sandwich price calculation

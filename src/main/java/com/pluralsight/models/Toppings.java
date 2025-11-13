@@ -4,7 +4,7 @@ public class Toppings {
 
     private boolean extra;
     //add enum property
-    private ToppingOption option;
+    private final ToppingOption option;
 
     //constructor
     public Toppings(boolean extra, ToppingOption option) {
