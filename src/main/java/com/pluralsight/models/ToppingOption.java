@@ -47,4 +47,16 @@ public enum ToppingOption {
         this.premium = premium;
     }
 
+    //getters
+    public String getName() {
+        return name;
+    }
+
+    public ToppingType getType() {
+        return type;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
 }
