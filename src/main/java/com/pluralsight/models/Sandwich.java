@@ -34,15 +34,18 @@ public class Sandwich extends MenuItem{
     //sandwich price calculation
     @Override
     public double calculatePrice(){
-        double sandwichPrice = 0;
-        if(size == 4){
-            sandwichPrice = 5.50;
-        } else if (size == 8) {
-            sandwichPrice = 7.00;
-        } else if (size == 12) {
-            sandwichPrice = 8.50;
-        }
-        return sandwichPrice * this.quantity;
+        double sandwichPrice = switch (size) {
+            case 4 -> 5.50;
+            case 8 -> 7.00;
+            case 12 -> 8.50;
+            default -> 0.0;
+        };
+        //add topping price
+        double toppingTotal = toppings.stream()
+                .mapToDouble(t -> t.toppingPrice(size))//this method extracts the topping price of each topping added
+                .sum();
+        //return total price
+        return (sandwichPrice + toppingTotal) * quantity;
     }
 
     //this method adds topping by category
@@ -56,10 +59,12 @@ public class Sandwich extends MenuItem{
             String input = Menu.prompt(String.format("Add %s (y/n)", option.getName()));
             //MISTAKE: Was only able to pass one parameter, so I had to use the String.format method
             //instead of the concat I had before
-            if(input.equalsIgnoreCase("yes")){
+            if(input.equalsIgnoreCase("yes") || input.equalsIgnoreCase("y")){
                 boolean extra = false;
                 if(option.isPremium()){
                     String extraInput = Menu.prompt(String.format("Add extra %s? (y/n)", option.getName()));
+                    extra = extraInput.equalsIgnoreCase("yes") || extraInput.equalsIgnoreCase("y");
+                    //MISTAKE: forgot to update my EXTRA variable from the extraInput prompt, it kept EXTRA as false regardless if input was yes
                 }
                 toppings.add(new Toppings(extra, option));
             }
