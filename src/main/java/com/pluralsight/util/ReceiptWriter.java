@@ -13,7 +13,7 @@ public class ReceiptWriter {
     public static void writeReceipt(Order order) {
 
         //names the file by using the current time
-        String fileName = "receipt_" + System.currentTimeMillis() + ".txt";
+        String fileName = "Receipts/receipt_" + System.currentTimeMillis() + ".txt";
 
         //create buffered write and file writer
         try {

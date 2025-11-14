@@ -1,0 +1,16 @@
+========= Baratie Sandwich Shop Receipt =========
+
+Date: 2025-11-14T03:56:46.359633200
+Items: 
+2x 12" Sandwich on white (Toasted)
+  - Chicken (extra)
+  - Ranch
+  Subtotal: $26.00
+
+=============================
+Subtotal: $26.00
+Tax:      $1.30
+Total:    $27.30
+=============================
+
+Thank you for visiting Baratie!
