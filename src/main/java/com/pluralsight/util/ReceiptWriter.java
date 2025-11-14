@@ -1,7 +1,6 @@
 package com.pluralsight.util;
 
-import com.pluralsight.models.MenuItem;
-import com.pluralsight.models.Order;
+import com.pluralsight.models.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -30,11 +29,50 @@ public class ReceiptWriter {
 
             //loop through items that have been added to the customer order
             for (MenuItem item : order.getOrderItems()) {
+                //use instanceOf to check if item is a sandwich child class
+                if (item instanceof Sandwich s) {
+                    //if true, get sandwich properties and format
+                    writer.write(s.getQuantity() + "x " +
+                            s.getSize() + "\" Sandwich on " + s.getBreadType() +
+                            (s.isToasted() ? " (Toasted)" : ""));
+                    writer.newLine();
 
-
+                    //toppings
+                    //create for each loop that gets all topping of the sandwich
+                    for(Toppings t : s.getToppings()){
+                        writer.write("  - " + t.getOption().getName() +
+                                (t.isExtra() ? " (extra)" : ""));
+                        writer.newLine();
+                    }
+                    //display total for sandwich
+                    writer.write(String.format("  Subtotal: $%.2f", s.calculatePrice()));
+                    writer.newLine();
+                    writer.newLine();
+                }
+                //use instanceOf to check if item is a drinks child class
+                else if (item instanceof Drinks d) {
+                    writer.write("1x " + d.getSize() + " Drink - " + d.getFlavor());
+                    writer.newLine();
+                    writer.write(String.format("  Price: $%.2f", d.calculatePrice()));
+                    writer.newLine();
+                    writer.newLine();
+                }
+                //use instanceOf to check if item is a Chips child class
+                else if (item instanceof Chips c) {
+                    writer.write("1x Chips - " + c.getFlavor());
+                    writer.newLine();
+                    writer.write(String.format("  Price: $%.2f", c.calculatePrice()));
+                    writer.newLine();
+                    writer.newLine();
+                }
             }
+
+            //totals
+
+
+
         } catch (IOException e) {
-            System.out.println("Error writing reciept: " + e.getMessage());
+            System.out.println("Error writing receipt: " + e.getMessage());
         }
     }
 }

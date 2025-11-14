@@ -30,4 +30,13 @@ public class Drinks extends MenuItem{
         this.size = Menu.prompt("Enter drink size ( S, M , L )");
         this.flavor = Menu.prompt("What flavor soda would you like?");
     }
+
+    //getters
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public String getSize() {
+        return size;
+    }
 }

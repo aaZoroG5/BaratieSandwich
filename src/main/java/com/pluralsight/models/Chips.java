@@ -23,4 +23,9 @@ public class Chips extends MenuItem{
     public void customerInput(){
         this.flavor = Menu.prompt("Enter chip flavor");
     }
+
+    //getters
+    public String getFlavor() {
+        return flavor;
+    }
 }
