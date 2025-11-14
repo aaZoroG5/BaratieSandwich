@@ -22,6 +22,7 @@ public class ReceiptWriter {
             //create the heading for the receipt
             writer.write("========= Baratie Sandwich Shop Receipt =========");
             writer.newLine();
+            writer.newLine();
             writer.write("Date: " + LocalDateTime.now());
             writer.newLine();
             writer.write("Items: ");
@@ -86,6 +87,7 @@ public class ReceiptWriter {
             writer.write("Thank you for visiting Baratie!");
             writer.newLine();
 
+            writer.close();
         } catch (IOException e) {
             System.out.println("Error writing receipt: " + e.getMessage());
         }

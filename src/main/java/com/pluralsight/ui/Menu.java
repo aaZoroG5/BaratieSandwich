@@ -20,7 +20,7 @@ public class Menu {
             for (int i = 0; i < options.size(); i++) { //TODO:REVIEW
                 System.out.println((i + 1) + ") " + options.get(i).getLabel());
             }
-            System.out.println("0) Go Back");
+            System.out.println("0) Exit");
 
             System.out.print("Enter choice: ");
             String input = scanner.nextLine().trim();

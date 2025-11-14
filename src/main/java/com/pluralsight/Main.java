@@ -44,7 +44,6 @@ public class Main {
 
         //build home screen
         homeMenu.addOption("Start New Order", orderMenu::homeScreen); //TODO REVIEW
-        homeMenu.addOption("Exit", () -> System.exit(0));
         //show home menu
         homeMenu.homeScreen();
 
