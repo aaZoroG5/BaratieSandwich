@@ -40,6 +40,7 @@ public class Main {
         orderMenu.addOption("Checkout", () -> {
             currentOrder.orderSummary();
             ReceiptWriter.writeReceipt(currentOrder);//creates receipt after you checkout
+            System.exit(0);//end the program
         });
 
         //build home screen

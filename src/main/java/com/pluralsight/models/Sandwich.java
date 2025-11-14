@@ -114,6 +114,69 @@ public class Sandwich extends MenuItem{
         System.out.printf("\nSubtotal for this sandwich: $%.2f\n", calculatePrice());
     }
 
+    //this method helps user select toppings by number
+    private void chooseToppings(){
+
+        //create boolean that keeps loop running until false
+        boolean addTopping = true;
+
+        while(addTopping){
+            System.out.println();
+            System.out.println("=============== Select your Toppings ===============");
+
+            //initialize index
+            int index = 1;
+            //create for each loop that adds topping options
+            for (ToppingOption option : ToppingOption.values()) {
+                System.out.printf("%d) %s%s%n",
+                        index++,
+                        option.getName(),
+                        option.isPremium() ? " (premium)" : "");
+            }
+            System.out.println("0) Done");
+
+            //prompt for user input
+            String input = Menu.prompt("Select topping number");
+
+            //validate number using try/catch
+            int choice;
+            try {
+                choice = Integer.parseInt(input);//parse user input into int
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number");
+                continue;
+            }
+
+            //exit loop
+            if(choice == 0) {
+                addTopping = false;
+                break;
+            }
+
+            // ensure valid topping
+            if (choice < 1 || choice > ToppingOption.values().length) {
+                System.out.println("Invalid choice");
+                continue;
+            }
+
+            // get selected topping
+            ToppingOption selected = ToppingOption.values()[choice - 1]; //TODO: REVIEW
+
+            //prompt user for extra if Premium
+            boolean extra = false;
+
+            if (selected.isPremium()) {
+                String extraInput = Menu.prompt("Add extra? (y/n)");
+                extra = extraInput.equalsIgnoreCase("y");
+            }
+
+            //add toppings
+            toppings.add(new Toppings(extra, selected));
+
+            //display the topping that was added
+            System.out.println(selected.getName() + " added!");
+        }
+    }
     //this method returns a sentence describing the sandwich exactly as the customer built it
     public String getDescription(){
         //create a string builder

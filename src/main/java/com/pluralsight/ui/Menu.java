@@ -14,6 +14,7 @@ public class Menu {
         boolean running = true;
 
         while (running) {
+            System.out.println();
             System.out.println("=== Baratie Sandwich ===\n");
 
             //display numbered options
