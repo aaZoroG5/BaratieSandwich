@@ -108,6 +108,10 @@ public class Sandwich extends MenuItem{
         addToppingByType(ToppingType.CHEESE);
         addToppingByType(ToppingType.REGULAR);
 
+        //prints out summary for sandwich
+        System.out.println("\n--- Sandwich Summary ---");
+        System.out.println(getDescription());
+        System.out.printf("\nSubtotal for this sandwich: $%.2f\n", calculatePrice());
     }
 
     //this method returns a sentence describing the sandwich exactly as the customer built it
