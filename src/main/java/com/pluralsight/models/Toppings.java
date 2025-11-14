@@ -57,4 +57,13 @@ public class Toppings {
         }
         return cost;
     }
+
+    //getters
+    public boolean isExtra() {
+        return extra;
+    }
+
+    public ToppingOption getOption() {
+        return option;
+    }
 }

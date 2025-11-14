@@ -80,7 +80,7 @@ public class Sandwich extends MenuItem{
                 this.size = Integer.parseInt(sizeInput);//convert string input into integer datatype
                 if(size == 4 || size == 8 || size == 12)//check that input is one of the 3 sizes
                     break;
-                System.out.println("Please eneter 4, 8, or 12");
+                System.out.println("Please enter 4, 8, or 12");
             } catch (NumberFormatException e) {
                 System.out.println("Please enter a valid number");//create try/catch for invalid input
             }
@@ -104,11 +104,13 @@ public class Sandwich extends MenuItem{
 
         //add toppings
         System.out.println("=========== Select your Toppings ===========");
-        addToppingByType(ToppingType.MEAT);
+        addToppingByType(ToppingType.MEAT); //TODO: REVIEW
         addToppingByType(ToppingType.CHEESE);
         addToppingByType(ToppingType.REGULAR);
 
     }
+
+    //this method
     //setters/getters
     public int getSize() {
         return size;

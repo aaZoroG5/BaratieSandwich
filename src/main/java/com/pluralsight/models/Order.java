@@ -34,7 +34,7 @@ public class Order {
                 .sum();
     }
 
-    //this method  prints out the order summary
+    //this method  prints out the order summary (receipt)
     public void orderSummary(){
         System.out.println("========= Order Summary =========");
         //create for each loop that prints out all order items
