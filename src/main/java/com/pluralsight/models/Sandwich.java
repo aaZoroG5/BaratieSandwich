@@ -70,6 +70,45 @@ public class Sandwich extends MenuItem{
             }
         }
     }
+
+    //this method takes user input to create a sandwich object
+    public void customerInput(){
+        //ask for sandwich size
+        while(true){
+            try {
+                String sizeInput = Menu.prompt("Enter sandwich size (4, 8, 12)");
+                this.size = Integer.parseInt(sizeInput);//convert string input into integer datatype
+                if(size == 4 || size == 8 || size == 12)//check that input is one of the 3 sizes
+                    break;
+                System.out.println("Please eneter 4, 8, or 12");
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");//create try/catch for invalid input
+            }
+        }
+
+        //bread choice
+        this.breadType = Menu.prompt("Choose bread type (white, wheat, rye, wrap)");
+
+        //toasted
+        String toastInput = Menu.prompt("Would you like it toasted? (y/n)");
+        this.isToasted = toastInput.equalsIgnoreCase("yes") || toastInput.equalsIgnoreCase("y");
+
+        //quantity
+        try {
+            String quantityInput = Menu.prompt("Enter quantity");
+            this.quantity = Integer.parseInt(quantityInput);//convert string input into integer datatype
+        } catch (NumberFormatException e) {
+            System.out.println("Invlaid input, setting quantity to 1");
+            this.quantity = 1;
+        }
+
+        //add toppings
+        System.out.println("=========== Select your Toppings ===========");
+        addToppingByType(ToppingType.MEAT);
+        addToppingByType(ToppingType.CHEESE);
+        addToppingByType(ToppingType.REGULAR);
+
+    }
     //setters/getters
     public int getSize() {
         return size;
@@ -101,5 +140,9 @@ public class Sandwich extends MenuItem{
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public List<Toppings> getToppings() {
+        return toppings;
     }
 }
