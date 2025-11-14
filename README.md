@@ -152,3 +152,102 @@ Potential add-ons:
 This project is created for learning and portfolio purposes.
 You are free to fork and modify it.
 
+```mermaid
+classDiagram
+    class MenuItem {
+        <<abstract>>
+        - String name
+        + calculatePrice() double
+        + getName() String
+        + setName(String)
+    }
+
+    class Sandwich {
+        - int size
+        - String breadType
+        - boolean isToasted
+        - int quantity
+        - List~Toppings~ toppings
+        + customerInput()
+        + calculatePrice() double
+        + getDescription() String
+    }
+
+    class Drinks {
+        - String flavor
+        - String size
+        + customerInput()
+        + calculatePrice() double
+    }
+
+    class Chips {
+        - String flavor
+        + customerInput()
+        + calculatePrice() double
+    }
+
+    class Order {
+        - List~MenuItem~ orderItems
+        + addItem(MenuItem)
+        + calculateTotal() double
+        + orderSummary()
+        + getOrderItems() List
+    }
+
+    class Toppings {
+        - boolean extra
+        - ToppingOption option
+        + toppingPrice(int) double
+        + isExtra() boolean
+        + getOption() ToppingOption
+    }
+
+    class ToppingOption {
+        <<enum>>
+        + getName() String
+        + getType() ToppingType
+        + isPremium() boolean
+    }
+
+    class ToppingType {
+        <<enum>>
+    }
+
+    class Menu {
+        - List~MenuOption~ options
+        + homeScreen()
+        + addOption(String, Runnable)
+        + prompt(String) String
+    }
+
+    class MenuOption {
+        - String label
+        - Runnable action
+        + getLabel()
+        + getAction()
+    }
+
+    class ReceiptWriter {
+        + writeReceipt(Order)
+    }
+
+    Sandwich --|> MenuItem
+    Drinks --|> MenuItem
+    Chips --|> MenuItem
+
+    Order --> MenuItem
+    Sandwich --> Toppings
+    Toppings --> ToppingOption
+    ToppingOption --> ToppingType
+
+    Menu --> MenuOption
+    ReceiptWriter --> Order
+```
+
+````md
+## UML Diagram
+
+```mermaid
+<diagram here>
+````
+
