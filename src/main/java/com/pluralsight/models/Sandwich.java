@@ -110,7 +110,38 @@ public class Sandwich extends MenuItem{
 
     }
 
-    //this method
+    //this method returns a sentence describing the sandwich exactly as the customer built it
+    public String getDescription(){
+        //create a string builder
+        StringBuilder sb = new StringBuilder();
+
+        //append each sandwich property
+        sb.append(size).append("\" ").append(breadType).append(" Sandwich");
+
+        if (isToasted) sb.append(" (Toasted)");
+
+        sb.append("\nToppings: ");
+
+        if (toppings.isEmpty()) {
+            sb.append("None");
+        } else {
+            //create a method that lists toppings
+            sb.append(getFormattedToppings());
+        }
+
+        sb.append("\nQuantity: ").append(quantity);
+        sb.append(String.format("\nItem Total: $%.2f", calculatePrice()));
+
+        return sb.toString();
+    }
+
+    //this method lists toppings on receipt
+    private String getFormattedToppings(){
+        //create stream that collects topping options
+        return toppings.stream()
+                .map(t -> t.getOption().getName() + (t.isExtra() ? " (extra)" : ""))
+                .collect(Collectors.joining(", "));
+    }
     //setters/getters
     public int getSize() {
         return size;

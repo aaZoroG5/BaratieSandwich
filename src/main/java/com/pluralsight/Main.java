@@ -43,5 +43,6 @@ public class Main {
         homeMenu.addOption("Exit", () -> System.exit(0));
         //show home menu
         homeMenu.homeScreen();
+
     }
 }
