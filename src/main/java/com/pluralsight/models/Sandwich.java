@@ -103,10 +103,7 @@ public class Sandwich extends MenuItem{
         }
 
         //add toppings
-        System.out.println("=========== Select your Toppings ===========");
-        addToppingByType(ToppingType.MEAT); //TODO: REVIEW
-        addToppingByType(ToppingType.CHEESE);
-        addToppingByType(ToppingType.REGULAR);
+        chooseToppings();
 
         //prints out summary for sandwich
         System.out.println("\n--- Sandwich Summary ---");
