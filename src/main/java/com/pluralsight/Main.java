@@ -5,6 +5,7 @@ import com.pluralsight.models.Drinks;
 import com.pluralsight.models.Order;
 import com.pluralsight.models.Sandwich;
 import com.pluralsight.ui.Menu;
+import com.pluralsight.util.ReceiptWriter;
 
 public class Main {
 
@@ -19,9 +20,9 @@ public class Main {
 
         //build the order screen
         orderMenu.addOption("Add Sandwich", () -> {
-            Sandwich s = new Sandwich();
-            s.customerInput();
-            currentOrder.addItem(s);
+            Sandwich s = new Sandwich();//create object
+            s.customerInput();//take customer input for empty object
+            currentOrder.addItem(s);//add the customized item
         });
 
         orderMenu.addOption("Add Drink", () -> {
@@ -36,7 +37,10 @@ public class Main {
             currentOrder.addItem(c);
         });
 
-        orderMenu.addOption("Checkout", currentOrder::orderSummary);
+        orderMenu.addOption("Checkout", () -> {
+            currentOrder.orderSummary();
+            ReceiptWriter.writeReceipt(currentOrder);//creates receipt after you checkout
+        });
 
         //build home screen
         homeMenu.addOption("Start New Order", orderMenu::homeScreen); //TODO REVIEW

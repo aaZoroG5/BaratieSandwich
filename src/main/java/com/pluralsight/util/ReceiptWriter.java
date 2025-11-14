@@ -68,8 +68,23 @@ public class ReceiptWriter {
             }
 
             //totals
+            double subtotal = order.calculateTotal();
+            double tax = subtotal * 0.05;
+            double total = subtotal + tax;
 
-
+            writer.write("=============================");
+            writer.newLine();
+            writer.write(String.format("Subtotal: $%.2f", subtotal));
+            writer.newLine();
+            writer.write(String.format("Tax:      $%.2f", tax));
+            writer.newLine();
+            writer.write(String.format("Total:    $%.2f", total));
+            writer.newLine();
+            writer.write("=============================");
+            writer.newLine();
+            writer.newLine();
+            writer.write("Thank you for visiting Baratie!");
+            writer.newLine();
 
         } catch (IOException e) {
             System.out.println("Error writing receipt: " + e.getMessage());
